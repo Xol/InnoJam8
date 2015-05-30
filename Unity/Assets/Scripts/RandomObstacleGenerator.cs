@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class RandomObstacleGenerator : MonoBehaviour {
 
 	private const int maxObstacleCount = 30;
-	private const int maxSprings = 30;
+	private const int maxSprings = 40;
 
 	public Transform duckWall;
 	public Transform spikes;
@@ -55,12 +55,16 @@ public class RandomObstacleGenerator : MonoBehaviour {
 		startPosition = ((-1) * maxMapSizeX / 2)+50;
 
 		for(int i = 0; i < maxSprings; i++){
-			Vector3 tmpVector = new Vector3((float)startPosition,2.4f,0f);
-			Debug.Log("tmpVector: " + tmpVector.x + "; endPosition: " + endPosition);
+			if(Random.Range (0,2)== 1){
+				maxHeight = 1.4f;
+			}else{
+				maxHeight = 15f;
+			}
+			Vector3 tmpVector = new Vector3((float)startPosition,maxHeight,0f);
 			if(tmpVector.x >= endPosition-50)
 				break;
 			Instantiate(spring, tmpVector, Quaternion.identity);
-			startPosition += Random.Range(20,100);
+			startPosition += Random.Range(10,50);
 		}
 	}
 }
