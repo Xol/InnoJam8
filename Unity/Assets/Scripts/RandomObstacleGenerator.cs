@@ -6,22 +6,6 @@ public class RandomObstacleGenerator : MonoBehaviour {
 
 	private const int maxObstacleCount = 30;
 
-	//duckWall
-	/*private float duckWallMaxHeight = 7f;
-	private int duckwallMaxCount = 5;
-
-	//spikes
-	private float spikesMinHeight = 2.183f;
-	private float spikesMaxHeight = 15f;
-	private int spikesMaxCount = 15;
-
-	//stomp
-	private float stompMaxHeight = 10f;
-	private int stompMaxCount = 10;
-
-	private GameObject Map;
-	private float maxMapSizeX;
-*/
 	public Transform duckWall;
 	public Transform spikes;
 	public Transform stomp;
@@ -44,7 +28,7 @@ public class RandomObstacleGenerator : MonoBehaviour {
 		startPosition = (-1) * maxMapSizeX / 2;
 		endPosition = maxMapSizeX / 2;
 
-		Debug.Log("maxMapSizeX: " + maxMapSizeX + "; startPosition: " + startPosition + "; endPosition: " + endPosition);
+		//Debug.Log("maxMapSizeX: " + maxMapSizeX + "; startPosition: " + startPosition + "; endPosition: " + endPosition);
 
 		for(int i = 0; i < maxObstacleCount; i++){
 			actualObstacleType = transformList[Random.Range(0, transformList.Count)];
@@ -61,7 +45,7 @@ public class RandomObstacleGenerator : MonoBehaviour {
 			//Eigenschaften zum nächsten Vecto
 			Vector3 tmpVector = new Vector3((float)startPosition,(float)maxHeight,0f);
 			//DEBUGAUSGABE
-			Debug.Log("tmpVector: " + tmpVector.x + "; endPosition: " + endPosition);
+			//Debug.Log("tmpVector: " + tmpVector.x + "; endPosition: " + endPosition);
 			if(tmpVector.x >= endPosition)
 				break;
 
