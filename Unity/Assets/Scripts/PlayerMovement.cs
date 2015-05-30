@@ -39,12 +39,14 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetKey (KeyCode.DownArrow)) {
 			rb.useGravity = true;
 
-			if (rb.velocity.y >= (float)(-0.1) && rb.velocity.y <= (float)(0.1)) {
+			if (rb.velocity.y >= (float)(-0.2) && rb.velocity.y <= (float)(0.2)) {
 				bc.size = new Vector3 (boxColliderSize.x, boxColliderSize.y / 2, bc.size.z);
-				bc.center = new Vector3(0,-1,0);
+				bc.center = new Vector3(0,-.7f,0);
+				transform.GetChild(1).GetComponent<PlayerAnimation>().setAniMode(3);
 			} else {
 				bc.size = boxColliderSize;
 				bc.center = Vector3.zero;
+				transform.GetChild(1).GetComponent<PlayerAnimation>().setAniMode(1);
 			}
 		} else {
 			bc.size = boxColliderSize;

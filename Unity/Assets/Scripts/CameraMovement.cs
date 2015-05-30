@@ -9,7 +9,7 @@ public class CameraMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("Player");
-		offset = new Vector3 (0, 9, -15);
+		offset = new Vector3 (0, 9, -25);
 	
 	}
 	

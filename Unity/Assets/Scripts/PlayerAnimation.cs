@@ -7,11 +7,13 @@ public class PlayerAnimation : MonoBehaviour {
 	private SpriteRenderer sr;
 	public Sprite[] run;
 	public Sprite[] fly;
+	public Sprite[] duck;
 	private int index, maxIndex;
 	private float FPS;
 	/**
 	 * 1 = run
 	 * 2 = fly
+	 * 3 = duck
 	 **/
 	private int aniMode;
 
@@ -38,10 +40,15 @@ public class PlayerAnimation : MonoBehaviour {
 		} else if (aniMode == 2) {
 			if (fly.Length == 0)
 				return;
-			
 			float index = Time.time * FPS;
 			index = index % fly.Length;
 			sr.sprite = fly [(int)index];
+		} else if (aniMode == 3) {
+			if (duck.Length == 0)
+				return;
+			float index = Time.time * FPS;
+			index = index % duck.Length;
+			sr.sprite = duck [(int)index];
 		}
 
 		if (player.transform.position.y <= 3f) {
@@ -50,5 +57,9 @@ public class PlayerAnimation : MonoBehaviour {
 			aniMode = 2;
 		}
 
+	}
+
+	public void setAniMode(int mode) {
+		aniMode = mode;
 	}
 }
