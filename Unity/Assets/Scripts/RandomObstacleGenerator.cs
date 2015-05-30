@@ -16,7 +16,7 @@ public class RandomObstacleGenerator : MonoBehaviour {
 	private Transform actualObstacleType;
 	private float startPosition, endPosition;
 	private float maxMapSizeX;
-	private float maxHeight;
+	public float maxHeight;
 
 	// Use this for initialization
 	void Start () {
@@ -56,14 +56,18 @@ public class RandomObstacleGenerator : MonoBehaviour {
 
 		for(int i = 0; i < maxSprings; i++){
 			if(Random.Range (0,2)== 1){
-				maxHeight = 1.4f;
+				maxHeight = -0.5f;
 			}else{
-				maxHeight = 15f;
+				maxHeight = 19.66f;
 			}
 			Vector3 tmpVector = new Vector3((float)startPosition,maxHeight,0f);
 			if(tmpVector.x >= endPosition-50)
 				break;
-			Instantiate(spring, tmpVector, Quaternion.identity);
+			Transform new_spring = (Transform)Instantiate(spring, tmpVector, Quaternion.identity);
+			if(maxHeight == 19.66f ) {
+				new_spring.eulerAngles = new Vector3(0,0,180);
+				new_spring.GetComponent<SpringBehavior>().setIsTop(true);
+			}
 			startPosition += Random.Range(10,50);
 		}
 	}

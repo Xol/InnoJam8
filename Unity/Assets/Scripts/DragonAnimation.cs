@@ -57,7 +57,6 @@ public class DragonAnimation : MonoBehaviour {
 		if (randomCount <= 0) {
 			randomCount = (int)Random.Range (150, 300);
 			randomVal = Random.Range(1,4);
-			Debug.Log (randomVal);
 		}
 		if (randomVal == 1) {
 			srHead.sprite = middleHead [(int)index];

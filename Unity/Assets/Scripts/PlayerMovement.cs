@@ -13,8 +13,9 @@ public class PlayerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		speed = new Vector3 (10, 0, 0);
-		invSpeed = -1 * speed;
+		Physics.gravity = new Vector3(0,-40f,0);
+		speed = new Vector3 (15, 0, 0);
+		invSpeed = new Vector3(-30,0,0);
 		rb = this.gameObject.GetComponent<Rigidbody> ();
 		bc = this.gameObject.GetComponent<BoxCollider> ();
 		boxColliderSize = bc.size;
@@ -24,7 +25,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (rb.velocity.x <= 20f && rb.velocity.x >= -20f) {
-			if (Input.GetKey (KeyCode.LeftArrow)) {
+			if (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) {
 				rb.AddForce (invSpeed);	
 			} else {
 				this.gameObject.GetComponent<Rigidbody> ().AddForce (speed);	
@@ -33,17 +34,17 @@ public class PlayerMovement : MonoBehaviour {
 		if (rb.velocity.x <= -20f) {
 			rb.AddForce (speed);
 		}
-		if (Input.GetKey (KeyCode.RightArrow) && rb.velocity.x <= 35f) {
+		if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) && rb.velocity.x <= 35f) {
 			rb.AddForce (speed * 2);
 		}
 
-		if (Input.GetKey (KeyCode.UpArrow)) {
+		if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W)) {
 			rb.useGravity = false;
 			rb.AddForce (new Vector3 (0, 3, 0));
 		}
-		if (Input.GetKey (KeyCode.DownArrow)) {
+		if (Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) {
 			rb.useGravity = true;
-
+			Debug.Log(rb.velocity.y);
 			if (rb.velocity.y >= (float)(-0.2) && rb.velocity.y <= (float)(0.2)) {
 				bc.size = new Vector3 (boxColliderSize.x, boxColliderSize.y / 2, bc.size.z);
 				bc.center = new Vector3 (0, -.7f, 0);
@@ -62,9 +63,12 @@ public class PlayerMovement : MonoBehaviour {
 			transform.rotation = Quaternion.RotateTowards (transform.rotation, Quaternion.identity, 200 * Time.deltaTime);		
 		}
 	}
-	public void toggleFly(){
-		//Debug.Log ("x, y, z: " + vec.x + " " + vec.y + " " + vec.z);
-		rb.velocity = new Vector3 (Random.Range (-100,100),Random.Range (0,100), 0f);
+	public void toggleFly(bool is_top){
+		if(!is_top) 
+			rb.velocity = new Vector3 (Random.Range (-100,100),Random.Range (0,100), 0f);
+		else
+			rb.velocity = new Vector3 (Random.Range (-100,100),Random.Range (-100,0), 0f);
+
 		//rb.velocity = new Vector3 (-100, 0, 0);
 	}
 }

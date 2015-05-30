@@ -16,7 +16,7 @@ public class KnifeHitDragon : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision) {
-		if (collision.gameObject.name == "Head") {
+		if (collision.gameObject.name == "DragonHead") {
 			Debug.Log ("Treffer");
 		}
 		
