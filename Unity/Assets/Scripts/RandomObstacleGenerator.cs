@@ -5,10 +5,12 @@ using System.Collections.Generic;
 public class RandomObstacleGenerator : MonoBehaviour {
 
 	private const int maxObstacleCount = 30;
+	private const int maxSprings = 30;
 
 	public Transform duckWall;
 	public Transform spikes;
 	public Transform stomp;
+	public Transform spring;
 
 	private GameObject Map;
 	private Transform actualObstacleType;
@@ -54,6 +56,18 @@ public class RandomObstacleGenerator : MonoBehaviour {
 				startPosition += Random.Range(20,100);
 			else
 				startPosition += Random.Range(5,30);
+		}
+		//reinitialisierung
+		startPosition = (-1) * maxMapSizeX / 2;
+
+		for(int i = 0; i < maxSprings; i++){
+
+			Vector3 tmpVector = new Vector3((float)startPosition,2.4f,0f);
+			Debug.Log("tmpVector: " + tmpVector.x + "; endPosition: " + endPosition);
+			if(tmpVector.x >= endPosition)
+				break;
+			Instantiate(spring, tmpVector, Quaternion.identity);
+			startPosition += Random.Range(20,100);
 		}
 
 	}
