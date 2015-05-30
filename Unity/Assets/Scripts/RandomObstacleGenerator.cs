@@ -27,10 +27,8 @@ public class RandomObstacleGenerator : MonoBehaviour {
 		Map = GameObject.Find ("Cube");
 		maxMapSizeX = Map.transform.localScale.x;
 
-		startPosition = (-1) * maxMapSizeX / 2;
+		startPosition = ((-1) * maxMapSizeX / 2)+50;
 		endPosition = maxMapSizeX / 2;
-
-		//Debug.Log("maxMapSizeX: " + maxMapSizeX + "; startPosition: " + startPosition + "; endPosition: " + endPosition);
 
 		for(int i = 0; i < maxObstacleCount; i++){
 			actualObstacleType = transformList[Random.Range(0, transformList.Count)];
@@ -41,14 +39,10 @@ public class RandomObstacleGenerator : MonoBehaviour {
 				maxHeight = Random.Range(2,15);
 			}else if(actualObstacleType == stomp){
 				maxHeight = 15;
-
 			}
 
-			//Eigenschaften zum nächsten Vecto
 			Vector3 tmpVector = new Vector3((float)startPosition,(float)maxHeight,0f);
-			//DEBUGAUSGABE
-			//Debug.Log("tmpVector: " + tmpVector.x + "; endPosition: " + endPosition);
-			if(tmpVector.x >= endPosition)
+			if(tmpVector.x >= (endPosition-50))
 				break;
 
 			Instantiate(actualObstacleType, tmpVector, Quaternion.identity);
@@ -57,24 +51,16 @@ public class RandomObstacleGenerator : MonoBehaviour {
 			else
 				startPosition += Random.Range(5,30);
 		}
-		//reinitialisierung
-		startPosition = (-1) * maxMapSizeX / 2;
+
+		startPosition = ((-1) * maxMapSizeX / 2)+50;
 
 		for(int i = 0; i < maxSprings; i++){
-
 			Vector3 tmpVector = new Vector3((float)startPosition,2.4f,0f);
 			Debug.Log("tmpVector: " + tmpVector.x + "; endPosition: " + endPosition);
-			if(tmpVector.x >= endPosition)
+			if(tmpVector.x >= endPosition-50)
 				break;
 			Instantiate(spring, tmpVector, Quaternion.identity);
 			startPosition += Random.Range(20,100);
 		}
-
 	}
-
-	/*
-	void Update () {
-		Debug.Log ("Maximale Kartengröße: " + maxMapSizeX);
-	}
-	*/
 }
