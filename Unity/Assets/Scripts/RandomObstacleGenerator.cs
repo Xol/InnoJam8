@@ -28,7 +28,7 @@ public class RandomObstacleGenerator : MonoBehaviour {
 		maxMapSizeX = Map.transform.localScale.x;
 
 		//Generierung der obstacles duckWall
-		for(int i = 0; i < duckwallMaxCount; i++){
+		/*for(int i = 0; i < duckwallMaxCount; i++){
 			//Instantiate (duckWall, new Vector3 ((float)Random.Range(-1)*(int)maxMapSizeX/2, (int)(maxMapSizeX/2)), duckWallMaxHeight, 0f), Quaternion.identity);
 			Instantiate (duckWall, new Vector3 ((float)Random.Range((-1)*(int)maxMapSizeX/2, (int)(maxMapSizeX/2)), duckWallMaxHeight, 0f), Quaternion.identity);
 		}
@@ -37,7 +37,7 @@ public class RandomObstacleGenerator : MonoBehaviour {
 		for(int i = 0; i < spikesMaxCount; i++){
 			//TODO: Der indirekte Cast ist natürlich bei floats nicht so schön. Das muss ausgebessert werden.
 			Instantiate (spikes, new Vector3 ((float)Random.Range((-1)*(int)maxMapSizeX/2, (int)(maxMapSizeX/2)), (float)Random.Range((int)spikesMinHeight,(int)spikesMaxHeight), 0f), Quaternion.identity);
-		}
+		}*/
 
 		//Generierung der obstacles stomp
 		for(int i = 0; i < spikesMaxCount; i++){
@@ -45,7 +45,7 @@ public class RandomObstacleGenerator : MonoBehaviour {
 			Instantiate (stomp, new Vector3 ((float)Random.Range((-1)*(int)maxMapSizeX/2, (int)(maxMapSizeX/2)), stompMaxHeight, 0f), Quaternion.identity);
 		}
 
-		//Generierung der obstacles
+		//Generierung der obstacles 
 	}
 
 
