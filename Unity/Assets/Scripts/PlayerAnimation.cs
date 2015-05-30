@@ -8,7 +8,7 @@ public class PlayerAnimation : MonoBehaviour {
 	public Sprite[] run;
 	public Sprite[] fly;
 	public Sprite[] duck;
-	private int index, maxIndex;
+	private int index;
 	private float FPS;
 	/**
 	 * 1 = run
@@ -20,7 +20,6 @@ public class PlayerAnimation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		sr = gameObject.GetComponent<SpriteRenderer> ();
-		maxIndex = run.Length-1;
 		FPS = 30;
 		aniMode = 1;
 		player = GameObject.Find ("Player");
