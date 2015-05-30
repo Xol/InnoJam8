@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a8cda591d82323b46bfb2490c1b439ec
+timeCreated: 1432976251
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - duckWall: {fileID: 437708, guid: 9ad35d091bd33004ab37e43b01bb6137, type: 2}
+  - spikes: {fileID: 475190, guid: 376e0d6f17a33e34dbc17b30e7399ddb, type: 2}
+  - stomp: {fileID: 402212, guid: c736cc5270aa1be44b961c7ce88c61c0, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
