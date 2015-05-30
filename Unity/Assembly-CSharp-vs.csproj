@@ -47,7 +47,15 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
+     <Compile Include="Assets\Scripts\DragonHeadMovement.cs" />
+     <Compile Include="Assets\Scripts\KnifeMovement.cs" />
+     <Compile Include="Assets\Scripts\KnifeShoot.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\RandomObstacleGenerator.cs" />
+     <Compile Include="Assets\Scripts\StompBehavior.cs" />
+     <Compile Include="Assets\Spriter2UnityDX\Runtime\EntityRenderer.cs" />
+     <Compile Include="Assets\Spriter2UnityDX\Runtime\SortingOrderUpdater.cs" />
+     <Compile Include="Assets\Spriter2UnityDX\Runtime\SpriteSwapper.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

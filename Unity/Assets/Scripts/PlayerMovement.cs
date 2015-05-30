@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (rb.velocity.x <= 25f && rb.velocity.x >= -25f) {
+		if (rb.velocity.x <= 20f && rb.velocity.x >= -20f) {
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				rb.AddForce (invSpeed);	
 			} else {
@@ -51,8 +51,8 @@ public class PlayerMovement : MonoBehaviour {
 			bc.center = Vector3.zero;
 		}
 
-		if (this.transform.position.y <= 4f) {
-			transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.identity, 250 * Time.deltaTime );		
+		if (this.transform.position.y <= 3f) {
+			transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.identity, 200 * Time.deltaTime );		
 		}
 	}
 }
