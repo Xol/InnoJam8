@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class RandomObstacleGenerator : MonoBehaviour {
 
+	private const int maxObstacleCount = 30;
+
 	//duckWall
-	private float duckWallMaxHeight = 7f;
+	/*private float duckWallMaxHeight = 7f;
 	private int duckwallMaxCount = 5;
 
 	//spikes
@@ -17,37 +20,59 @@ public class RandomObstacleGenerator : MonoBehaviour {
 	private int stompMaxCount = 10;
 
 	private GameObject Map;
-	private double maxMapSizeX;
-
+	private float maxMapSizeX;
+*/
 	public Transform duckWall;
 	public Transform spikes;
 	public Transform stomp;
+
+	private GameObject Map;
+	private Transform actualObstacleType;
+	private float startPosition, endPosition;
+	private float maxMapSizeX;
+	private float maxHeight;
+
 	// Use this for initialization
 	void Start () {
+		List<Transform> transformList = new List<Transform>(){
+			duckWall, spikes, stomp
+		};
+
 		Map = GameObject.Find ("Cube");
 		maxMapSizeX = Map.transform.localScale.x;
 
-		//Generierung der obstacles duckWall
-		for(int i = 0; i < duckwallMaxCount; i++){
-			//Instantiate (duckWall, new Vector3 ((float)Random.Range(-1)*(int)maxMapSizeX/2, (int)(maxMapSizeX/2)), duckWallMaxHeight, 0f), Quaternion.identity);
-			Instantiate (duckWall, new Vector3 ((float)Random.Range((-1)*(int)maxMapSizeX/2, (int)(maxMapSizeX/2)), duckWallMaxHeight, 0f), Quaternion.identity);
+		startPosition = (-1) * maxMapSizeX / 2;
+		endPosition = maxMapSizeX / 2;
+
+		Debug.Log("maxMapSizeX: " + maxMapSizeX + "; startPosition: " + startPosition + "; endPosition: " + endPosition);
+
+		for(int i = 0; i < maxObstacleCount; i++){
+			actualObstacleType = transformList[Random.Range(0, transformList.Count)];
+
+			if(actualObstacleType == duckWall){
+				maxHeight = 8f;
+			}else if(actualObstacleType == spikes){
+				maxHeight = Random.Range(2,15);
+			}else if(actualObstacleType == stomp){
+				maxHeight = 15;
+
+			}
+
+			//Eigenschaften zum nächsten Vecto
+			Vector3 tmpVector = new Vector3((float)startPosition,(float)maxHeight,0f);
+			//DEBUGAUSGABE
+			Debug.Log("tmpVector: " + tmpVector.x + "; endPosition: " + endPosition);
+			if(tmpVector.x >= endPosition)
+				break;
+
+			Instantiate(actualObstacleType, tmpVector, Quaternion.identity);
+			if(!(actualObstacleType == spikes))
+				startPosition += Random.Range(20,100);
+			else
+				startPosition += Random.Range(5,30);
 		}
 
-		//Generierung der obstacles spikes
-		for(int i = 0; i < spikesMaxCount; i++){
-			//TODO: Der indirekte Cast ist natürlich bei floats nicht so schön. Das muss ausgebessert werden.
-			Instantiate (spikes, new Vector3 ((float)Random.Range((-1)*(int)maxMapSizeX/2, (int)(maxMapSizeX/2)), (float)Random.Range((int)spikesMinHeight,(int)spikesMaxHeight), 0f), Quaternion.identity);
-		}
-
-		//Generierung der obstacles stomp
-		for(int i = 0; i < spikesMaxCount; i++){
-			//TODO: Der indirekte Cast ist natürlich bei floats nicht so schön. Das muss ausgebessert werden.
-			Instantiate (stomp, new Vector3 ((float)Random.Range((-1)*(int)maxMapSizeX/2, (int)(maxMapSizeX/2)), stompMaxHeight, 0f), Quaternion.identity);
-		}
-
-		//Generierung der obstacles 
 	}
-
 
 	/*
 	void Update () {
