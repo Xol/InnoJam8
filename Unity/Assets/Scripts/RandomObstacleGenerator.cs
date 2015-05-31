@@ -41,7 +41,7 @@ public class RandomObstacleGenerator : MonoBehaviour {
 			actualObstacleType = transformList[Random.Range(0, transformList.Count)];
 			
 			if(actualObstacleType == duckWall){
-				maxHeight = 8f;
+				maxHeight = 8.5f;
 			}else if(actualObstacleType == spikes){
 				maxHeight = Random.Range(2,15);
 			}else if(actualObstacleType == stomp){
