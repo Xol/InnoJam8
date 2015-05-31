@@ -6,7 +6,7 @@ public class RandomObstacleGenerator : MonoBehaviour {
 
 	private const int maxObstacleCount = 30;
 	private const int maxSprings = 40;
-	private int coinCount;
+	private const int coinCount = 50;
 
 	public Transform duckWall;
 	public Transform spikes;
@@ -53,7 +53,7 @@ public class RandomObstacleGenerator : MonoBehaviour {
 				break;
 			
 			Instantiate(actualObstacleType, tmpVector, Quaternion.identity);
-			if(!(actualObstacleType == spikes))
+			if(actualObstacleType != spikes)
 				startPosition += Random.Range(20,100);
 			else
 				startPosition += Random.Range(5,30);
@@ -82,17 +82,22 @@ public class RandomObstacleGenerator : MonoBehaviour {
 	}
 
 	private void generateCoins(){
-		coinCount = Random.Range (10, 31);
+		//coinCount = Random.Range (10, 31);
 		startPosition = ((-1) * maxMapSizeX / 2)+50;
-		
+
 		for(int i = 0; i < coinCount; i++){
 			maxHeight = Random.Range(-1,20);
 			Vector3 tmpVector = new Vector3((float)startPosition,maxHeight,0f);
 			if(tmpVector.x >= endPosition-50)
 				break;
+			//if coin ist überlapping nichts tun
 			Instantiate(coin, tmpVector, Quaternion.identity);
 			startPosition += Random.Range(10,50);
 		}
+	}
 
+	void OnTriggerEnter (Collider col){
+		Debug.Log ("DEBUG: OnCollisionEnter(); in RandomObstacleGenerator: " + col.gameObject.name);
+			Destroy (this.gameObject);
 	}
 }
