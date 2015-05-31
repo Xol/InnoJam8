@@ -27,8 +27,6 @@ public class PlayerAnimation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (aniMode);
-
 
 		if (aniMode == 1) {
 			if (run.Length == 0)
