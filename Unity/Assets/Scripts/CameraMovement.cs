@@ -18,4 +18,8 @@ public class CameraMovement : MonoBehaviour {
 		this.transform.position = new Vector3(player.transform.position.x, offset.y, offset.z);
 	
 	}
+
+	public void setPlayer(GameObject _player) {
+		this.player = _player;
+	}
 }

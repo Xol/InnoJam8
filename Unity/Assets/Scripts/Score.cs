@@ -16,12 +16,11 @@ public class Score : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		time += Time.deltaTime ;
-		Debug.Log (time);
-		score.GetComponent<TextMesh> ().text = player.GetComponent<PlayerScore> ().getCoins ().ToString();
-		score1.GetComponent<TextMesh> ().text = player.GetComponent<PlayerScore> ().getCoins ().ToString();
-		time1.GetComponent<TextMesh> ().text = ((int)time).ToString();
-		time2.GetComponent<TextMesh> ().text = ((int)time).ToString();
-
-
+		if (player) {
+			score.GetComponent<TextMesh> ().text = player.GetComponent<PlayerScore> ().getCoins ().ToString();
+			score1.GetComponent<TextMesh> ().text = player.GetComponent<PlayerScore> ().getCoins ().ToString();
+			time1.GetComponent<TextMesh> ().text = ((int)time).ToString();
+			time2.GetComponent<TextMesh> ().text = ((int)time).ToString();
+		}
 	}
 }
