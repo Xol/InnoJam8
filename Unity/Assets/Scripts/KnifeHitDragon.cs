@@ -28,7 +28,7 @@ public class KnifeHitDragon : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.name == "DragonHead") {
 			GameObject.Find ("DragonKilled").GetComponent<AudioSource>().Play();
-
+			GameObject.Find ("dragonkiller").GetComponent<SpriteRenderer>().enabled = true;
 			Destroy(this);
 			Destroy(dragonBody);
 			Destroy(collision.gameObject.GetComponent<SpikeCollision>());

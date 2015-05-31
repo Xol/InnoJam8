@@ -27,6 +27,10 @@ public class Score : MonoBehaviour {
 	public string getTime() {
 		return ((int)time).ToString ();
 	}
+	public int getTimeInt() {
+		return (int)time;
+
+	}
 	public string getStage() {
 		return ((int)stage).ToString ();
 	}

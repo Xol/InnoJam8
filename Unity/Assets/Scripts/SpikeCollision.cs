@@ -25,9 +25,6 @@ public class SpikeCollision : MonoBehaviour {
 			GameObject.Find ("HeroDies").GetComponent<AudioSource>().Play();
 			Destroy(GameObject.Find ("Music"));
 			GameObject.Find ("GameOverMusic").GetComponent<AudioSource>().Play();
-			GameObject.Find("Player").GetComponent<PlayerScore>().resetCoins();
-			GameObject.Find("_Settings").GetComponent<Score>().resetTime();
-			GameObject.Find("_Settings").GetComponent<Score>().resetStage();
 			GameObject.Find("_Settings").GetComponent<RestartScript>().setIsDead(true);
 			for (int i = 0; i < bodyParts.Length*3; i++) {
 				GameObject newObj = Instantiate(bodyPartsPrefab, collision.transform.position, Quaternion.identity) as GameObject;

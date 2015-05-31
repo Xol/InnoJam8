@@ -42,6 +42,10 @@ public class GUI : MonoBehaviour {
 			GameObject.Find("right").GetComponent<SpriteRenderer>().enabled = true;
 			GameObject.Find("right_marked").GetComponent<SpriteRenderer>().enabled = false;
 		}
+
+		GameObject.Find ("stagetxt").GetComponent<TextMesh> ().text = GameObject.Find ("_Settings").GetComponent<Score> ().getStage ();
+		GameObject.Find ("stagetxt1").GetComponent<TextMesh> ().text = GameObject.Find ("_Settings").GetComponent<Score> ().getStage ();
+
 	
 	}
 }

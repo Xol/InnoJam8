@@ -15,6 +15,9 @@ public class RestartScript : MonoBehaviour {
 	void Update () {
 		if(isDead && Input.GetKeyDown(KeyCode.Space)) {
 			Application.LoadLevel ("Level");
+			GameObject.Find("Player").GetComponent<PlayerScore>().resetCoins();
+			GameObject.Find("_Settings").GetComponent<Score>().resetTime();
+			GameObject.Find("_Settings").GetComponent<Score>().resetStage();
 
 
 		}
