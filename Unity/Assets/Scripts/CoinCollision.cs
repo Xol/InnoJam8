@@ -17,6 +17,7 @@ public class CoinCollision : MonoBehaviour {
 		if (collision.gameObject.name == "Player") {
 			Destroy(this.gameObject);
 			collision.gameObject.GetComponent<PlayerScore>().addCoin();
+			GameObject.Find ("CollectCoin").GetComponent<AudioSource>().Play();
 		}
 	}
 }

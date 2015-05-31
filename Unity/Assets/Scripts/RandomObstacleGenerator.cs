@@ -35,7 +35,7 @@ public class RandomObstacleGenerator : MonoBehaviour {
 		Map = GameObject.Find ("Cube");
 		maxMapSizeX = Map.transform.localScale.x;
 		
-		startPosition = ((-1) * maxMapSizeX / 2)+50;
+		startPosition = ((-1) * maxMapSizeX / 2)+100;
 		endPosition = maxMapSizeX / 2;
 		for(int i = 0; i < maxObstacleCount; i++){
 			actualObstacleType = transformList[Random.Range(0, transformList.Count)];
@@ -49,7 +49,7 @@ public class RandomObstacleGenerator : MonoBehaviour {
 			}
 			
 			Vector3 tmpVector = new Vector3((float)startPosition,(float)maxHeight,0f);
-			if(tmpVector.x >= (endPosition-50))
+			if(tmpVector.x >= (endPosition-100))
 				break;
 			
 			Instantiate(actualObstacleType, tmpVector, Quaternion.identity);
@@ -61,7 +61,7 @@ public class RandomObstacleGenerator : MonoBehaviour {
 	}
 
 	private void generateSpringTraps(){
-		startPosition = ((-1) * maxMapSizeX / 2)+50;
+		startPosition = ((-1) * maxMapSizeX / 2)+100;
 		
 		for(int i = 0; i < maxSprings; i++){
 			if(Random.Range (0,2)== 1){
@@ -70,7 +70,7 @@ public class RandomObstacleGenerator : MonoBehaviour {
 				maxHeight = 19.66f;
 			}
 			Vector3 tmpVector = new Vector3((float)startPosition,maxHeight,0f);
-			if(tmpVector.x >= endPosition-50)
+			if(tmpVector.x >= endPosition-100)
 				break;
 			Transform new_spring = (Transform)Instantiate(spring, tmpVector, Quaternion.identity);
 			if(maxHeight == 19.66f ) {
@@ -83,12 +83,12 @@ public class RandomObstacleGenerator : MonoBehaviour {
 
 	private void generateCoins(){
 		//coinCount = Random.Range (10, 31);
-		startPosition = ((-1) * maxMapSizeX / 2)+50;
+		startPosition = ((-1) * maxMapSizeX / 2)+100;
 
 		for(int i = 0; i < coinCount; i++){
 			maxHeight = Random.Range(-1,20);
 			Vector3 tmpVector = new Vector3((float)startPosition,maxHeight,0f);
-			if(tmpVector.x >= endPosition-50)
+			if(tmpVector.x >= endPosition-100)
 				break;
 			//if coin ist überlapping nichts tun
 			Instantiate(coin, tmpVector, Quaternion.identity);

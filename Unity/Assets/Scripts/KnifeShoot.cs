@@ -16,6 +16,8 @@ public class KnifeShoot : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			Instantiate(knife, spawnPoint.gameObject.transform.position, Quaternion.identity);
+			GameObject.Find ("ThrowKnife").GetComponent<AudioSource>().Play();
+
 		}
 	}
 }

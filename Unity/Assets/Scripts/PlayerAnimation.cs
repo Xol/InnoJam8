@@ -59,5 +59,10 @@ public class PlayerAnimation : MonoBehaviour {
 
 	public void setAniMode(int mode) {
 		aniMode = mode;
+		if (mode == 1) {
+			GameObject.Find ("RunningSound").GetComponent<AudioSource> ().Play ();
+		} else {
+			GameObject.Find ("RunningSound").GetComponent<AudioSource> ().Stop();
+		}
 	}
 }

@@ -9,6 +9,9 @@ public class SpringBehavior : MonoBehaviour {
 	{
 		if(col.gameObject.name == "Player")	{
 			col.gameObject.GetComponent<PlayerMovement>().toggleFly(is_top);
+			GameObject.Find ("SpringSound").GetComponent<AudioSource>().Play();
+
+
 		}
 	}
 

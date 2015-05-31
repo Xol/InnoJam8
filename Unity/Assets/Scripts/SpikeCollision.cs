@@ -18,10 +18,13 @@ public class SpikeCollision : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.name == "Player") {
-			GameObject.Find ("GameOver").transform.position =  GameObject.Find ("GameOver").transform.position - new Vector3(0,0,-9);
+			GameObject.Find ("GameOver").transform.position =  GameObject.Find ("GameOver").transform.position - new Vector3(0,0,-10);
 			GameObject.Find ("GameOverScore").GetComponent<TextMesh>().text = GameObject.Find("Player").GetComponent<PlayerScore>().getCoins().ToString();
 			GameObject.Find ("GameOverTime").GetComponent<TextMesh>().text = GameObject.Find("_Settings").GetComponent<Score>().getTime();
 			GameObject.Find ("GameOverStage").GetComponent<TextMesh>().text = "Stage " + GameObject.Find("_Settings").GetComponent<Score>().getStage();
+			GameObject.Find ("HeroDies").GetComponent<AudioSource>().Play();
+			Destroy(GameObject.Find ("Music"));
+			GameObject.Find ("GameOverMusic").GetComponent<AudioSource>().Play();
 			GameObject.Find("Player").GetComponent<PlayerScore>().resetCoins();
 			GameObject.Find("_Settings").GetComponent<Score>().resetTime();
 			GameObject.Find("_Settings").GetComponent<Score>().resetStage();
