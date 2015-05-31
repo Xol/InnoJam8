@@ -18,7 +18,14 @@ public class SpikeCollision : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.name == "Player") {
-			Instantiate(bloodSplat,collision.transform.position, Quaternion.identity);
+			GameObject.Find ("GameOver").transform.position =  GameObject.Find ("GameOver").transform.position - new Vector3(0,0,-9);
+			GameObject.Find ("GameOverScore").GetComponent<TextMesh>().text = GameObject.Find("Player").GetComponent<PlayerScore>().getCoins().ToString();
+			GameObject.Find ("GameOverTime").GetComponent<TextMesh>().text = GameObject.Find("_Settings").GetComponent<Score>().getTime();
+			GameObject.Find ("GameOverStage").GetComponent<TextMesh>().text = "Stage " + GameObject.Find("_Settings").GetComponent<Score>().getStage();
+			GameObject.Find("Player").GetComponent<PlayerScore>().resetCoins();
+			GameObject.Find("_Settings").GetComponent<Score>().resetTime();
+			GameObject.Find("_Settings").GetComponent<Score>().resetStage();
+			GameObject.Find("_Settings").GetComponent<RestartScript>().setIsDead(true);
 			for (int i = 0; i < bodyParts.Length*3; i++) {
 				GameObject newObj = Instantiate(bodyPartsPrefab, collision.transform.position, Quaternion.identity) as GameObject;
 				Destroy(collision.gameObject);
@@ -26,8 +33,6 @@ public class SpikeCollision : MonoBehaviour {
 				newObj.GetComponent<SpriteRenderer>().sprite = bodyParts[Random.Range(0, bodyParts.Length)];
 				int randVal = Random.Range(-300,300);
 				newObj.GetComponent<Rigidbody>().velocity = new Vector3(randVal,randVal,randVal);
-				Instantiate(bloodSplat,newObj.transform.position, Quaternion.identity);
-
 			}
 		}
 	}
