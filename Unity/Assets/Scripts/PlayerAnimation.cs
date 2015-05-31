@@ -27,7 +27,7 @@ public class PlayerAnimation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		Debug.Log (aniMode);
 
 
 		if (aniMode == 1) {
@@ -50,9 +50,10 @@ public class PlayerAnimation : MonoBehaviour {
 			sr.sprite = duck [(int)index];
 		}
 
-		if (player.transform.position.y <= 3f) {
+		if (player.transform.position.y <= 3f && aniMode != 3) {
 			aniMode = 1;		
-		} else {
+		} 
+		if(player.transform.position.y > 3f) {
 			aniMode = 2;
 		}
 

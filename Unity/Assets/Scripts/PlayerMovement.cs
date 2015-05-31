@@ -42,21 +42,17 @@ public class PlayerMovement : MonoBehaviour {
 			rb.useGravity = false;
 			rb.AddForce (new Vector3 (0, 3, 0));
 		}
-		if (Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) {
+		if (Input.GetKeyDown (KeyCode.DownArrow) || Input.GetKeyDown (KeyCode.S)) {
 			rb.useGravity = true;
-			Debug.Log(rb.velocity.y);
-			if (rb.velocity.y >= (float)(-0.2) && rb.velocity.y <= (float)(0.2)) {
-				bc.size = new Vector3 (boxColliderSize.x, boxColliderSize.y / 2, bc.size.z);
-				bc.center = new Vector3 (0, -.7f, 0);
-				transform.GetChild (1).GetComponent<PlayerAnimation> ().setAniMode (3);
-			} else {
-				bc.size = boxColliderSize;
-				bc.center = Vector3.zero;
-				transform.GetChild (1).GetComponent<PlayerAnimation> ().setAniMode (1);
-			}
-		} else {
+			bc.size = new Vector3 (boxColliderSize.x, boxColliderSize.y / 3, bc.size.z);
+			bc.center = new Vector3 (0, -.7f, 0);
+			transform.GetChild (1).GetComponent<PlayerAnimation> ().setAniMode (3);
+		} 
+		if (Input.GetKeyUp (KeyCode.DownArrow) || Input.GetKeyUp (KeyCode.S)) {
+			transform.GetChild (1).GetComponent<PlayerAnimation> ().setAniMode (1);
 			bc.size = boxColliderSize;
 			bc.center = Vector3.zero;
+
 		}
 
 		if (this.transform.position.y <= 3f) {
